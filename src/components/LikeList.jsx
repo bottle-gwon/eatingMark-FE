@@ -1,4 +1,4 @@
-import Item from "./Item"
+import Item, { ItemForDummy } from "./Item"
 
 export default function LikeList() {
     
@@ -20,7 +20,7 @@ export default function LikeList() {
         <div className="w-3/4">
             <h2>찜한 맛집</h2>
             <div className="flex flex-wrap w-full bg-gray-400 py-5">
-                {dummy.map(el => <Item key={el.id} item={el.title} /> )}
+                {dummy.map(el => <ItemForDummy key={el.id} item={el.title} /> )}
             </div>
         </div>
     )
