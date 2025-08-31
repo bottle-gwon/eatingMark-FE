@@ -1,6 +1,9 @@
+import { usePlace } from "../hooks/usePlace"
 import Item from "./Item"
 
 export default function Restaurant() {
+    const {places, isLoading, error} = usePlace();
+    console.log(places, isLoading, error);
     const dummy = [{
         id:1,
         title: 'test'

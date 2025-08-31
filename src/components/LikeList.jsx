@@ -15,7 +15,7 @@ export default function LikeList() {
         id:4,
         title: 'test'
     }]
-    
+
     return(
         <div className="w-3/4">
             <h2>찜한 맛집</h2>
