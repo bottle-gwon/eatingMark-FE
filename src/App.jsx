@@ -1,5 +1,6 @@
 import './App.css'
 import LikeList from './components/LikeList'
+import LoadingItem from './components/LoadingItem'
 import Restaurant from './components/Restaurant'
 
 function App() {

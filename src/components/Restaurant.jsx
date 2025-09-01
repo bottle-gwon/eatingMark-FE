@@ -9,9 +9,10 @@ export default function Restaurant() {
         return( <LoadingItem /> )
     }
     if(error){
-        return(<>
+        return(
+        <div className="bg-red-300 px-3 py-0.5">
             <p>{`${error} 에러 발생`}</p>
-        </>)
+        </div>)
     }
     
     return(

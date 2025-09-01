@@ -1,10 +1,10 @@
 import axios from "axios"
+import PATHS from "../constants/urls";
 
-const baseUrl = import.meta.env.VITE_BASE_URL
 
 export default async function getPlace () {
     try {
-        const response = await axios.get(`${baseUrl}/places`);
+        const response = await axios.get(PATHS.GET_PLACES);
         if(response.status!==200){
             throw new Error(`전체 맛집 목록 조회 실패 ${response.status}`)
         }
