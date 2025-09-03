@@ -2,9 +2,13 @@ import {  useQuery, useQueryClient } from "@tanstack/react-query";
 // import { useLike } from "../hooks/useLike";
 import Item from "./Item"
 import LoadingItem from "./LoadingItem";
-import { delteLikePlace, getLikePlace } from "../api/users";
+import { getLikePlace } from "../api/users";
+import { useState } from "react";
+import DeleteModal from "./DeleteModal";
 
 export default function LikeList() {
+    const [open, setOpen] = useState(false)
+    const [delId, setDelId] = useState(null);
     const queryClient = useQueryClient()
     const {data: LikeList, isLoading, isError, error } = useQuery({
         queryKey: ['LikeList'],
@@ -13,10 +17,9 @@ export default function LikeList() {
 
 
     const handleClick = async (id) => {
-        console.log('clixk')
-        const response = await delteLikePlace(id);
-        console.log(response)
-        queryClient.invalidateQueries({queryKey: ['LikeList']})
+
+        setOpen(true)
+        setDelId(id)
 
     }
 
@@ -38,6 +41,7 @@ export default function LikeList() {
             <div className="flex flex-wrap w-full bg-gray-400 py-5" >
                 {queryClient.getQueryData(['LikeList'])?.places.map(el => <Item key={el.id} item={el}  onClick={()=>handleClick(el.id)}/> )}
             </div>
+            <DeleteModal open={open} setOpen={setOpen} id={delId} setId={setDelId}/>
         </div>
     )
 }
